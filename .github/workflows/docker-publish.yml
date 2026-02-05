@@ -5,16 +5,24 @@ name: Docker
 # separate terms of service, privacy policy, and support
 # documentation.
 
-on:
+#on:
   # schedule:
   #   - cron: '42 22 * * *'
-  push:
-    branches: [ "master" ]
+ # push:
+  #  branches: [ "master" ]
     # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
+   # tags: [ 'v*.*.*' ]
 #  pull_request:
 #    branches: [ "master" ]
 
+on:
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      set_example:
+        description: "oneplus"
+        required: true
+        default: "fajita"
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
